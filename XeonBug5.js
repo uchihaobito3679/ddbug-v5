@@ -2597,7 +2597,7 @@ if (typemenu === 'v1') {
                             externalAdReply: {
                                 title: botname,
                                 body: ownername,
-                                thumbnailUrl: 'https://i.ibb.co/kSs1stX/thumb.jpg',
+                                thumbnailUrl: 'https://telegra.ph/file/25511c9e1ce4ecaf85a91.jpg',
                                 sourceUrl: link,
                                 mediaType: 1,
                                 renderLargerThumbnail: true
@@ -2615,7 +2615,7 @@ if (typemenu === 'v1') {
       externalAdReply: {
       title: botname,
       body: ownername,
-      thumbnailUrl: 'https://i.ibb.co/Wppj16p/cheemspic.jpg',
+      thumbnailUrl: 'https://telegra.ph/file/25511c9e1ce4ecaf85a91.jpg',
       sourceUrl: ``,
       mediaType: 1,
       renderLargerThumbnail: true
